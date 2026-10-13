@@ -1,5 +1,9 @@
 
 
+from re import S
+
+from attr import s
+
 from pydantic import BaseModel, Field
 from typing import Optional,Text
 from bson import ObjectId
@@ -23,5 +27,10 @@ class datachunk(BaseModel):
                     "unique":False
                 }
                 
-            ]    
+            ]  
+            
+class RetrivedDocument(BaseModel):
+    text:str 
+    score:float 
+                 
                     

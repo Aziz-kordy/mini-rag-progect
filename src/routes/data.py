@@ -120,7 +120,7 @@ async def process_endpoint(requesttt:Request,request:processrequest, project_id:
         
         no_records+=await chunk_model.insert_all_chunks(chunks=file_chunks_record)
         no_files+=1
-    return {"message": f"تم معالجة {no_files} ملفات وادراج {no_records} سجلات في قاعدة البيانات بنجاح."}
+    return {"chunk_no":no_records}
                         
         
                

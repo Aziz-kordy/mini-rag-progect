@@ -1,5 +1,7 @@
 
 
+from models.db_schemes.project import Project
+
 from .basedatamodel import BaseDataModel
 from .db_schemes.datachunk import datachunk
 from bson import ObjectId
@@ -52,3 +54,29 @@ class chunkmodel(BaseDataModel):
             
         return len(chunks)        
          
+    async def get_all_chunks(self,project_id: ObjectId,page: int = 1,page_size: int = 10):
+    
+    
+    
+    
+                         
+    
+     skip = (page - 1) * page_size
+
+     records = await self.collection.find({"chunk_project_id": project_id}).skip(skip).limit(page_size).to_list(length=page_size )
+        
+     
+                               
+     
+        
+     chunks = []
+
+     for document in records:
+        chunks.append(
+            datachunk(**document)
+        )
+
+     return chunks
+        
+        
+             
